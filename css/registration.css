@@ -1,0 +1,157 @@
+.main-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding: 0 20px;
+}
+
+.logo {
+    width: 330px;
+    height: auto;
+    margin: 0;
+}
+
+.name {
+    color: black;
+    font-size: 36px;
+    font-weight: 200;
+    margin: 0;
+    margin-bottom: 15px;
+}
+
+.paragraph {
+    font-size: 16px;
+    color: #666;
+    text-align: center;
+    font-weight: 400;
+    max-width: 750px;
+    margin-bottom: 30px;
+}
+
+.create-tree-btn {
+    text-decoration: none;
+    display: inline-block;
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+    border-radius: 20px;
+    font-size: 14px;
+    padding: 10px 20px;
+    transition: 0.3s;
+}
+
+::selection {
+    color: white;
+    background: black;
+}
+
+.reg-step-1-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding: 0 20px;
+}
+
+.reg-logo {
+    width: 150px;
+    height: auto;
+    margin: 0;
+}
+
+.steps {
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    padding: 0px 58px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border-radius: 5px;
+}
+
+.steps-text {
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.steps-ico {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.black {
+    color: black;
+}
+
+.form {
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    padding: 20px 25px 40px 25px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.form h3 {
+    font-weight: 400;
+}
+
+.gender {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.men {
+    margin-right: 30px;
+    color: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    transition: .3s;
+}
+
+.men:hover,
+.women:hover {
+    color: black;
+}
+
+.women {
+    color: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    transition: .3s;
+}
+
+.people-input {
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 2px;
+    color: rgba(0, 0, 0, 0.5);
+    padding: 8px;
+}
+
+.last-name {
+    width: 252.5px;
+}
+
+.first-name,
+.middle-name {
+    width: 112.5px;
+}
+
+.b-day,
+.b-year {
+    width: 44.5px;
+}
+
+.b-month {
+    width: 120px;
+}
+
+.next-btn {
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    color: rgba(0, 0, 0, 0.5);
+    background-color: #fff;
+    border-radius: 3px;
+    margin-top: 30px;
+    padding: 5px 40px;
+    cursor: pointer;
+}
