@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,44 +10,45 @@
     <link rel="stylesheet" href="css/registration.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
 </head>
+
 <body>
-    <section class="reg-step-1-container">
+    <section class="reg-container">
         <div>
             <img class="reg-logo" src="img/FamilyTreeLogo.png" alt="Family Tree Logo">
         </div>
 
-        <div class="steps">
-            <p class="steps-text"> <span class="black">Step 1: You</span> <i class="ri-arrow-right-s-line steps-ico"></i> Step 2: Family</p> 
+        <div class="steps" style="margin-top: 30px;">
+            <p class="steps-text"> <span class="black">Step 1: You</span> <i
+                    class="ri-arrow-right-s-line steps-ico"></i> Step 2: Family</p>
         </div>
 
         <form class="form">
-                <h3>YOU</h3>
-                <div class="gender">
-                    <label class="men">
-                        <!-- <input type="radio" name="gender" value="male"> -->
-                        <i class="ri-men-line"></i>
-                        <span>male</span>
-                    </label>
-                    <label class="women">
-                        <!-- <input type="radio" name="gender" value="female"> -->
-                        <i class="ri-women-line"></i>
-                        <span>female</span>
-                    </label>
-                </div>
-                <div class="name">
-                    <input type="text" name="last_name" placeholder="Last name" class="people-input last-name"> <br>
-                    <input type="text" name="first_name" placeholder="First name" class="people-input first-name">
-                    <input type="text" name="middle_name" placeholder="Middle name" class="people-input middle-name">
-                </div>
-                <div class="dmy">
-                    <input type="text" name="day" placeholder="dd" maxlength="2" class="people-input b-day">
-                    <input type="text" name="month" placeholder="mm" maxlength="2" class="people-input b-month">
-                    <input type="text" name="year" placeholder="yy" maxlength="4" class="people-input b-year">
-                </div>
+            <h3>YOU</h3>
+            <div class="gender">
+                <label class="men">
+                    <i class="ri-men-line"></i>
+                    <span>male</span>
+                </label>
+                <label class="women">
+                    <i class="ri-women-line"></i>
+                    <span>female</span>
+                </label>
+            </div>
+            <div class="name">
+                <input type="text" name="last_name" placeholder="Last name" class="people-input last-name"> <br>
+                <input type="text" name="first_name" placeholder="First name" class="people-input first-name">
+                <input type="text" name="middle_name" placeholder="Middle name" class="people-input middle-name">
+            </div>
+            <div class="dmy">
+                <input type="text" name="day" placeholder="dd" maxlength="2" class="people-input b-day">
+                <input type="text" name="month" placeholder="mm" maxlength="2" class="people-input b-month">
+                <input type="text" name="year" placeholder="yy" maxlength="4" class="people-input b-year">
+            </div>
         </form>
-        
-        <button class="next-btn">Next</button>
+
+        <a class="next-btn" href="reg-step-2-1.html">Next</a>
 
     </section>
 </body>
+
 </html>

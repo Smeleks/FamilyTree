@@ -47,7 +47,7 @@
     background: black;
 }
 
-.reg-step-1-container {
+.reg-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -57,15 +57,27 @@
 }
 
 .reg-logo {
-    width: 150px;
+    width: 110px;
     height: auto;
     margin: 0;
 }
 
 .steps {
     border: 1px solid rgba(0, 0, 0, 0.3);
-    padding: 0px 58px;
+    padding: 5px 58px;
     margin-top: 30px;
+    margin-bottom: 30px;
+    border-radius: 5px;
+}
+
+.step-2-container {
+    display: flex;
+    gap: 20px;
+}
+
+.steps-2 {
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    padding: 5px 36px;
     margin-bottom: 30px;
     border-radius: 5px;
 }
@@ -82,6 +94,11 @@
 
 .black {
     color: black;
+}
+
+.form-container {
+    display: flex;
+    gap: 30px;
 }
 
 .form {
@@ -146,12 +163,19 @@
     width: 120px;
 }
 
+.button-container {
+    display: flex;
+    gap: 20px;
+}
+
 .next-btn {
     border: 1px solid rgba(0, 0, 0, 0.3);
     color: rgba(0, 0, 0, 0.5);
     background-color: #fff;
+    text-decoration: none;
     border-radius: 3px;
+    font-size: 13px;
     margin-top: 30px;
-    padding: 5px 40px;
+    padding: 5px 30px;
     cursor: pointer;
 }
