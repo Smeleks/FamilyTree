@@ -179,3 +179,39 @@
     padding: 5px 30px;
     cursor: pointer;
 }
+
+.previous-btn {
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    color: rgba(0, 0, 0, 0.5);
+    background-color: #fff;
+    text-decoration: none;
+    border-radius: 3px;
+    font-size: 13px;
+    margin-top: 30px;
+    padding: 5px 20px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.red {
+    border: 1px solid #F25757;
+    color: #F25757;
+}
+
+.red-text {
+    color: #F25757;
+}
+
+.red::placeholder {
+    color: #F25757;
+    opacity: .7;
+}
+
+::placeholder {
+    opacity: .7;
+}
+
+::selection {
+    color: white;
+    background: black;
+}

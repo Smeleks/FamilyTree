@@ -34,21 +34,24 @@
                     <span>female</span>
                 </label>
             </div>
+            
             <div class="name">
-                <input type="text" name="last_name" placeholder="Last name" class="people-input last-name"> <br>
-                <input type="text" name="first_name" placeholder="First name" class="people-input first-name">
+                <input type="text" name="last_name" placeholder="Last name" class="people-input last-name" required> <br>
+                <input type="text" name="first_name" placeholder="First name" class="people-input first-name" required>
                 <input type="text" name="middle_name" placeholder="Middle name" class="people-input middle-name">
             </div>
             <div class="dmy">
-                <input type="text" name="day" placeholder="dd" maxlength="2" class="people-input b-day">
-                <input type="text" name="month" placeholder="mm" maxlength="2" class="people-input b-month">
-                <input type="text" name="year" placeholder="yy" maxlength="4" class="people-input b-year">
+                <input type="text" name="day" placeholder="dd" maxlength="2" class="people-input b-day" required>
+                <input type="text" name="month" placeholder="mm" maxlength="2" class="people-input b-month" required>
+                <input type="text" name="year" placeholder="yy" maxlength="4" class="people-input b-year" required>
             </div>
         </form>
 
         <a class="next-btn" href="reg-step-2-1.html">Next</a>
 
     </section>
+
+    <script src="js/registration.js"></script>
 </body>
 
 </html>
