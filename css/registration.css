@@ -193,6 +193,71 @@
     cursor: pointer;
 }
 
+.deceased {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.deceased input[type="checkbox"] {
+    margin-right: 10px;
+    accent-color: gray;
+}
+
+.deceased label {
+    font-size: 15px;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.death-date {
+    margin-top: 15px;
+}
+
+.d-day,
+.d-year {
+    width: 44.5px;
+}
+
+.d-month {
+    width: 120px;
+}
+
+.death-date .dmy input {
+    margin-right: 10px;
+}
+
+.password-container {
+    position: relative;
+}
+
+.password-toggle {
+    position: absolute;
+    right: 10px;
+    top: 44%;
+    cursor: pointer;
+    font-size: 18px;
+    color: rgba(0, 0, 0, 0.3);
+    transition: .3s all;
+}
+
+.password-toggle:hover {
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.input-error {
+    display: flex;
+    font-size: 14px;
+    justify-content: center;
+    margin-top: 20px;
+    font-weight: 500;
+    margin-bottom: -30px;
+    color: red;
+}
+
+.hidden {
+    display: none;
+}
+
 .red {
     border: 1px solid #F25757;
     color: #F25757;

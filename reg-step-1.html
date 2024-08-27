@@ -34,9 +34,10 @@
                     <span>female</span>
                 </label>
             </div>
-            
+
             <div class="name">
-                <input type="text" name="last_name" placeholder="Last name" class="people-input last-name" required> <br>
+                <input type="text" name="last_name" placeholder="Last name" class="people-input last-name" required>
+                <br>
                 <input type="text" name="first_name" placeholder="First name" class="people-input first-name" required>
                 <input type="text" name="middle_name" placeholder="Middle name" class="people-input middle-name">
             </div>
@@ -45,10 +46,23 @@
                 <input type="text" name="month" placeholder="mm" maxlength="2" class="people-input b-month" required>
                 <input type="text" name="year" placeholder="yy" maxlength="4" class="people-input b-year" required>
             </div>
+            <div class="name">
+                <input type="email" name="email" placeholder="Email" class="people-input last-name" required> <br>
+                <div class="password-container">
+                    <input type="password" name="password" placeholder="Password" class="people-input last-name"
+                        required>
+                    <i class="ri-eye-line password-toggle"></i>
+                </div>
+                <div class="password-container">
+                    <input type="password" name="confirm_password" placeholder="Confirm Password"
+                        class="people-input last-name" required>
+                    <i class="ri-eye-line password-toggle"></i>
+                </div>
+                <span class="input-error hidden">Password's doesnt match!</span>
+            </div>
         </form>
 
-        <a class="next-btn" href="reg-step-2-1.html">Next</a>
-
+        <a id="next-step-1" class="next-btn" href="reg-step-2-1.html">Next</a>
     </section>
 
     <script src="js/registration.js"></script>
