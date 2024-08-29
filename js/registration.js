@@ -35,27 +35,27 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
         // Deceased Checkbox Handler
-        const deceasedCheckbox = form.querySelector('.deceased input[type="checkbox"]');
-        const deathDateDiv = form.querySelector('.death-date');
-        const deathDateInputs = deathDateDiv ? deathDateDiv.querySelectorAll('input') : [];
+        // const deceasedCheckbox = form.querySelector('.deceased input[type="checkbox"]');
+        // const deathDateDiv = form.querySelector('.death-date');
+        // const deathDateInputs = deathDateDiv ? deathDateDiv.querySelectorAll('input') : [];
 
-        if (deceasedCheckbox && deathDateDiv) {
-            deceasedCheckbox.addEventListener('change', function () {
-                if (this.checked) {
-                    deathDateDiv.classList.remove('hidden');
-                    // Mark death date inputs as required
-                    deathDateInputs.forEach(input => {
-                        input.setAttribute('required', 'required');
-                    });
-                } else {
-                    deathDateDiv.classList.add('hidden');
-                    // Remove required attribute from death date inputs
-                    deathDateInputs.forEach(input => {
-                        input.removeAttribute('required');
-                    });
-                }
-            });
-        }
+        // if (deceasedCheckbox && deathDateDiv) {
+        //     deceasedCheckbox.addEventListener('change', function () {
+        //         if (this.checked) {
+        //             deathDateDiv.classList.remove('hidden');
+        //             // Mark death date inputs as required
+        //             deathDateInputs.forEach(input => {
+        //                 input.setAttribute('required', 'required');
+        //             });
+        //         } else {
+        //             deathDateDiv.classList.add('hidden');
+        //             // Remove required attribute from death date inputs
+        //             deathDateInputs.forEach(input => {
+        //                 input.removeAttribute('required');
+        //             });
+        //         }
+        //     });
+        // }
     });
 
     // "Next" Buttons Handler
@@ -71,8 +71,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 let inputs = form.querySelectorAll('input[required]');
                 let genderSelected = form.querySelector('.gender .black');
-                const deceasedCheckbox = form.querySelector('.deceased input[type="checkbox"]');
-                const deathDateInputs = form.querySelectorAll('.death-date input');
+                // const deceasedCheckbox = form.querySelector('.deceased input[type="checkbox"]');
+                // const deathDateInputs = form.querySelectorAll('.death-date input');
 
                 inputs.forEach(function (input) {
                     if (!input.value) {
@@ -83,53 +83,13 @@ document.addEventListener('DOMContentLoaded', function () {
                     }
                 });
 
-                // If deceased checkbox is checked, validate death date inputs
-                if (deceasedCheckbox && deceasedCheckbox.checked) {
-                    deathDateInputs.forEach(function (input) {
-                        if (!input.value) {
-                            input.classList.add('red');
-                            allValid = false;
-                        } else {
-                            input.classList.remove('red');
-                        }
-                    });
-                }
+                // Validate birth date inputs
+                validateDateInputs(form, '.b-day', '.b-month', '.b-year');
 
-                let dayInput = form.querySelector('.b-day');
-                let monthInput = form.querySelector('.b-month');
-                let yearInput = form.querySelector('.b-year');
-
-                if (dayInput && monthInput && yearInput) {
-                    const day = parseInt(dayInput.value, 10);
-                    const month = parseInt(monthInput.value, 10);
-                    const year = parseInt(yearInput.value, 10);
-
-                    if (isNaN(day) || day < 1 || day > 31 || dayInput.value.match(/\D/)) {
-                        dayInput.classList.add('red');
-                        allValid = false;
-                    } else {
-                        dayInput.classList.remove('red');
-                    }
-
-                    if (isNaN(month) || month < 1 || month > 12 || monthInput.value.match(/\D/)) {
-                        monthInput.classList.add('red');
-                        allValid = false;
-                    } else {
-                        monthInput.classList.remove('red');
-                    }
-
-                    if (isNaN(year) || year > 2025 || yearInput.value.match(/\D/)) {
-                        yearInput.classList.add('red');
-                        allValid = false;
-                    } else {
-                        yearInput.classList.remove('red');
-                    }
-
-                    if (month === 2 && day > 29) {
-                        dayInput.classList.add('red');
-                        allValid = false;
-                    }
-                }
+                // Validate death date inputs if the deceased checkbox is checked
+                // if (deceasedCheckbox && deceasedCheckbox.checked) {
+                //     validateDateInputs(form, '.d-day', '.d-month', '.d-year', true);
+                // }
 
                 if (!genderSelected) {
                     form.querySelectorAll('.gender i, .gender span').forEach(el => {
@@ -165,6 +125,16 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
+    document.addEventListener('keydown', function (event) {
+        if (event.key === 'Enter') {
+                event.preventDefault();
+                const nextButton = document.querySelector('.next-btn');
+                if (nextButton) {
+                    nextButton.click();
+            }
+        }
+    });
+
     // Password Switch Handler  
     document.querySelectorAll('.password-toggle').forEach(toggle => {
         toggle.addEventListener('click', function () {
@@ -180,4 +150,50 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     });
+
+    // Function to validate date inputs (birth date and death date)
+    function validateDateInputs(form, daySelector, monthSelector, yearSelector, isDeathDate = false) {
+        let dayInput = form.querySelector(daySelector);
+        let monthInput = form.querySelector(monthSelector);
+        let yearInput = form.querySelector(yearSelector);
+
+        if (dayInput && monthInput && yearInput) {
+            const day = parseInt(dayInput.value, 10);
+            const month = parseInt(monthInput.value, 10);
+            const year = parseInt(yearInput.value, 10);
+
+            if (isNaN(day) || day < 1 || day > 31 || dayInput.value.match(/\D/)) {
+                dayInput.classList.add('red');
+                allValid = false;
+            } else {
+                dayInput.classList.remove('red');
+            }
+
+            if (isNaN(month) || month < 1 || month > 12 || monthInput.value.match(/\D/)) {
+                monthInput.classList.add('red');
+                allValid = false;
+            } else {
+                monthInput.classList.remove('red');
+            }
+
+            if (isNaN(year) || year > 2025 || yearInput.value.match(/\D/)) {
+                yearInput.classList.add('red');
+                allValid = false;
+            } else {
+                yearInput.classList.remove('red');
+            }
+
+            // Additional checks for day limits based on month and leap year
+            if (month === 2 && day > 29) {
+                dayInput.classList.add('red');
+                allValid = false;
+            } else if ([4, 6, 9, 11].includes(month) && day > 30) {
+                dayInput.classList.add('red');
+                allValid = false;
+            } else if (day > 31) {
+                dayInput.classList.add('red');
+                allValid = false;
+            }
+        }
+    }
 });

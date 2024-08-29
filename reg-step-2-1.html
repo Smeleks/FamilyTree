@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/registration.css">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
-</head>
+</head> 
 
 <body>
     <section class="reg-container">
@@ -62,7 +62,7 @@
                         required>
                     <input type="text" name="year" placeholder="yy" maxlength="4" class="people-input b-year" required>
                 </div>
-                <div class="death-date hidden">
+                <!-- <div class="death-date hidden">
                     <input type="text" name="death_day" placeholder="dd" maxlength="2" class="people-input d-day">
                     <input type="text" name="death_month" placeholder="mm" maxlength="2" class="people-input d-month">
                     <input type="text" name="death_year" placeholder="yy" maxlength="4" class="people-input d-year">
@@ -70,7 +70,7 @@
                 <div class="deceased">
                     <input type="checkbox" id="deceased" name="deceased">
                     <label for="deceased">Deceased</label>
-                </div>
+                </div> -->
             </form>
 
             <form class="form">
@@ -98,7 +98,7 @@
                         required>
                     <input type="text" name="year" placeholder="yy" maxlength="4" class="people-input b-year" required>
                 </div>
-                <div class="death-date hidden">
+                <!-- <div class="death-date hidden">
                     <input type="text" name="death_day" placeholder="dd" maxlength="2" class="people-input d-day">
                     <input type="text" name="death_month" placeholder="mm" maxlength="2" class="people-input d-month">
                     <input type="text" name="death_year" placeholder="yy" maxlength="4" class="people-input d-year">
@@ -106,7 +106,7 @@
                 <div class="deceased">
                     <input type="checkbox" id="deceased" name="deceased">
                     <label for="deceased">Deceased</label>
-                </div>
+                </div> -->
             </form>
         </div>
 
@@ -118,6 +118,71 @@
     </section>
 
     <script src="js/registration.js"></script>
+    <!-- Form Title by Gender Selection Script  -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const forms = document.querySelectorAll('.form');
+
+            if (forms.length === 2) {
+                const form1 = forms[0];
+                const form2 = forms[1];
+
+                const genderLabelsForm1 = form1.querySelectorAll('.gender label');
+                const genderLabelsForm2 = form2.querySelectorAll('.gender label');
+
+                const header1 = form1.querySelector('h3');
+                const header2 = form2.querySelector('h3');
+
+                genderLabelsForm1.forEach(label => {
+                    label.addEventListener('click', function () {
+                        const isMale = label.classList.contains('men');
+
+                        header1.textContent = isMale ? "FATHER" : "MOTHER";
+
+                        if (isMale) {
+                            selectGender(genderLabelsForm2, 'female');
+                            header2.textContent = "MOTHER";
+                        } else {
+                            selectGender(genderLabelsForm2, 'male');
+                            header2.textContent = "FATHER";
+                        }
+                    });
+                });
+
+                genderLabelsForm2.forEach(label => {
+                    label.addEventListener('click', function () {
+                        const isMale = label.classList.contains('men');
+
+                        header2.textContent = isMale ? "FATHER" : "MOTHER";
+
+                        if (isMale) {
+                            selectGender(genderLabelsForm1, 'female');
+                            header1.textContent = "MOTHER";
+                        } else {
+                            selectGender(genderLabelsForm1, 'male');
+                            header1.textContent = "FATHER";
+                        }
+                    });
+                });
+
+                function selectGender(labels, gender) {
+                    labels.forEach(label => {
+                        const isMale = label.classList.contains('men');
+                        const icon = label.querySelector('i');
+                        const text = label.querySelector('span');
+
+                        if ((gender === 'male' && isMale) || (gender === 'female' && !isMale)) {
+                            icon.classList.add('black');
+                            text.classList.add('black');
+                        } else {
+                            icon.classList.remove('black');
+                            text.classList.remove('black');
+                        }
+                    });
+                }
+            }
+        });
+    </script>
 </body>
 
 </html>

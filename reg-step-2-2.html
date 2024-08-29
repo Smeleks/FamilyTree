@@ -119,6 +119,43 @@
 
     <script src="js/registration.js"></script>
     <script src="js/not-full-info-error.js"></script>
+    <!-- Form Title by Gender Selection Script  -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const forms = document.querySelectorAll('.form[data-optional]');
+
+            forms.forEach(form => {
+                const genderLabels = form.querySelectorAll('.gender label');
+                const header = form.querySelector('h3');
+
+                genderLabels.forEach(label => {
+                    label.addEventListener('click', function () {
+                        const isMale = label.classList.contains('men');
+
+                        header.textContent = isMale ? "BROTHER" : "SISTER";
+
+                        selectGender(genderLabels, isMale ? 'male' : 'female');
+                    });
+                });
+
+                function selectGender(labels, gender) {
+                    labels.forEach(label => {
+                        const isMale = label.classList.contains('men');
+                        const icon = label.querySelector('i');
+                        const text = label.querySelector('span');
+
+                        if ((gender === 'male' && isMale) || (gender === 'female' && !isMale)) {
+                            icon.classList.add('black');
+                            text.classList.add('black');
+                        } else {
+                            icon.classList.remove('black');
+                            text.classList.remove('black');
+                        }
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

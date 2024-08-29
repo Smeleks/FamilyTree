@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Function to check if any field in the form is filled
     function isAnyFieldFilled(form) {
         const inputs = form.querySelectorAll('input');
-        const genderSelected = form.querySelector('.gender .black'); // Проверка выбора гендера
+        const genderSelected = form.querySelector('.gender .black');
 
         return Array.from(inputs).some(input => input.value.trim() !== '') || genderSelected;
     }
@@ -12,7 +12,6 @@ document.addEventListener('DOMContentLoaded', function () {
         const inputs = form.querySelectorAll('input');
 
         inputs.forEach(input => {
-            // Убираем обязательность для "Middle Name"
             if (input.name === 'middle_name') {
                 input.removeAttribute('required');
             } else if (shouldRequire) {
@@ -39,7 +38,6 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         });
 
-        // Обработка выбора гендера
         genderLabels.forEach(label => {
             label.addEventListener('click', function () {
                 if (isAnyFieldFilled(form)) {
