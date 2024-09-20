@@ -127,10 +127,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.addEventListener('keydown', function (event) {
         if (event.key === 'Enter') {
-                event.preventDefault();
-                const nextButton = document.querySelector('.next-btn');
-                if (nextButton) {
-                    nextButton.click();
+            event.preventDefault();
+            const nextButton = document.querySelector('.next-btn');
+            if (nextButton) {
+                nextButton.click();
             }
         }
     });
