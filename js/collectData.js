@@ -1,12 +1,13 @@
 document.addEventListener('DOMContentLoaded', function () {
     const nextStep1Button = document.getElementById('next-step-1');
-    const nextStep2Button = document.getElementById('next-step-2-1');
 
-    // Шаг 1: Сбор данных о пользователе
     if (nextStep1Button) {
         nextStep1Button.addEventListener('click', function (event) {
+            const selectedGenderElement = document.querySelector('.gender .selected'); // Элемент, у которого выбранный пол
+            const gender = selectedGenderElement ? selectedGenderElement.textContent.trim().toLowerCase() : ''; // Получаем текст выбранного гендера
+
             const userData = {
-                gender: document.querySelector('.gender .black') ? document.querySelector('.gender .black').textContent : null,
+                gender: gender,
                 first_name: document.querySelector('input[name="first_name"]').value,
                 middle_name: document.querySelector('input[name="middle_name"]').value,
                 last_name: document.querySelector('input[name="last_name"]').value,
@@ -17,37 +18,28 @@ document.addEventListener('DOMContentLoaded', function () {
                 password: document.querySelector('input[name="password"]').value
             };
 
-            // Сохраняем данные в sessionStorage
             sessionStorage.setItem('userData', JSON.stringify(userData));
         });
     }
 
-    // Шаг 2: Сбор данных о родителях
-    if (nextStep2Button) {
-        nextStep2Button.addEventListener('click', function (event) {
-            const parentsData = {
-                father: {
-                    gender: 'male',
-                    first_name: document.querySelectorAll('input[name="first_name"]')[0].value,
-                    middle_name: document.querySelectorAll('input[name="middle_name"]')[0].value,
-                    last_name: document.querySelectorAll('input[name="last_name"]')[0].value,
-                    birth_day: document.querySelectorAll('input[name="day"]')[0].value,
-                    birth_month: document.querySelectorAll('input[name="month"]')[0].value,
-                    birth_year: document.querySelectorAll('input[name="year"]')[0].value,
-                },
-                mother: {
-                    gender: 'female',
-                    first_name: document.querySelectorAll('input[name="first_name"]')[1].value,
-                    middle_name: document.querySelectorAll('input[name="middle_name"]')[1].value,
-                    last_name: document.querySelectorAll('input[name="last_name"]')[1].value,
-                    birth_day: document.querySelectorAll('input[name="day"]')[1].value,
-                    birth_month: document.querySelectorAll('input[name="month"]')[1].value,
-                    birth_year: document.querySelectorAll('input[name="year"]')[1].value,
-                }
-            };
+    const form = document.querySelector('form');
+    if (form) {
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
 
-            // Сохраняем данные родителей в sessionStorage
-            sessionStorage.setItem('parentsData', JSON.stringify(parentsData));
+            const userData = JSON.parse(sessionStorage.getItem('userData'));
+            const formData = new FormData(form);
+            Object.keys(userData).forEach(key => formData.append(key, userData[key]));
+
+            fetch('php/register.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text())
+            .then(data => {
+                // console.log(data);
+            })
+            .catch(error => console.error('Error:', error));
         });
     }
 });
