@@ -246,7 +246,7 @@
 
 .input-error {
     display: flex;
-    font-size: 14px;
+    font-size: 12px;
     justify-content: center;
     margin-top: 20px;
     font-weight: 500;
