@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 errorMessage.textContent = data.error;
                 errorMessage.classList.remove('hidden');
             } else if (data.success) {
-                window.location.href = 'map.html';
+                window.location.href = 'user_info.html';
             }
         })
         .catch(error => {

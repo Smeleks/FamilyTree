@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+if (isset($_SESSION['user_id'])) {
+
+    header("Location: user_info.html");
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,7 +32,7 @@
         </div> -->
 
         <form class="form">
-            <h3>Sign In</h3>
+            <h3>Log In</h3>
             <div class="name">
                 <input type="email" name="email" placeholder="Email" class="people-input last-name" required> <br>
                 <div class="password-container">

@@ -39,25 +39,23 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     form.addEventListener('submit', function (event) {
-        event.preventDefault(); // Остановить стандартную отправку формы
+        event.preventDefault();
 
         const password = document.querySelector('input[name="password"]').value;
         const confirmPassword = document.querySelector('input[name="confirm_password"]').value;
         const errorMessage = document.getElementById('input-error');
         errorMessage.classList.add('hidden');
 
-        // Проверка длины пароля
         if (password.length < 8) {
             errorMessage.textContent = "Password must be at least 8 characters long.";
             errorMessage.classList.remove('hidden');
-            return; // Останавливаем выполнение, если пароль слишком короткий
+            return;
         }
 
-        // Проверка на совпадение паролей
         if (password !== confirmPassword) {
             errorMessage.textContent = "Passwords do not match.";
             errorMessage.classList.remove('hidden');
-            return; // Останавливаем выполнение, если пароли не совпадают
+            return;
         }
 
         const formData = new FormData(form);
@@ -70,15 +68,15 @@ document.addEventListener('DOMContentLoaded', function () {
         .then(data => {
             if (data.error) {
                 errorMessage.textContent = data.error;
-                errorMessage.classList.remove('hidden'); // Показываем сообщение об ошибке
+                errorMessage.classList.remove('hidden');
             } else if (data.success) {
-                alert(data.success); // Можете заменить на что-то другое, например, перенаправление
+                alert(data.success);
             }
         })
         .catch(error => {
             console.error('Error:', error);
             errorMessage.textContent = `An error occurred: ${error.message}`;
-            errorMessage.classList.remove('hidden'); // Показываем сообщение об ошибке
+            errorMessage.classList.remove('hidden');
         });
     });
 });

@@ -29,6 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo json_encode(["error" => "Email is already registered."]);
     } else {
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
         $stmt = $conn->prepare("INSERT INTO users (last_name, first_name, middle_name, day, month, year, email, password, gender) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
         if (!$stmt) {
             echo json_encode(["error" => "SQL Error: " . $conn->error]);
@@ -38,7 +39,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bind_param("ssiiissss", $last_name, $first_name, $middle_name, $day, $month, $year, $email, $hashed_password, $gender);
 
         if ($stmt->execute()) {
-            echo json_encode(["success" => "Registration successful!"]);
+            session_start();
+            $_SESSION['user_id'] = $conn->insert_id;
+            $_SESSION['user_email'] = $email;
+
+            echo json_encode(["success" => "Registration successful", "redirect" => "user_info.html"]);
         } else {
             echo json_encode(["error" => "Error: " . $stmt->error]);
         }
