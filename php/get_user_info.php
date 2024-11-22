@@ -19,15 +19,18 @@ if ($result->num_rows === 0) {
     echo json_encode(["error" => "User not found."]);
 } else {
     $user = $result->fetch_assoc();
-    echo json_encode([
+    $response = [
         "first_name" => $user['first_name'],
-        "middle_name" => $user['middle_name'],
         "last_name" => $user['last_name'],
-        "email" => $user['email'],
-        "day" => $user['day'],
-        "month" => $user['month'],
-        "year" => $user['year']
-    ]);
+        "email" => $user['email']
+    ];
+
+    // Add middle_name if it is not empty or "0"
+    if (!empty($user['middle_name']) && $user['middle_name'] !== "0") {
+        $response["middle_name"] = $user['middle_name'];
+    }
+
+    echo json_encode($response);
 }
 
 $stmt->close();
