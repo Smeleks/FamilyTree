@@ -43,10 +43,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['user_id'] = $conn->insert_id;
             $_SESSION['user_email'] = $email;
 
-            echo json_encode(["success" => "Registration successful", "redirect" => "user_info.html"]);
+            echo json_encode(["redirect" => "map.html"]);
+            exit;
         } else {
             echo json_encode(["error" => "Error: " . $stmt->error]);
-        }
+            exit;
+        }       
     }
 
     $stmt->close();

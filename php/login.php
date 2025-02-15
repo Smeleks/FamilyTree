@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit;
     }
 
-    $stmt = $conn->prepare("SELECT * FROM users WHERE email = ?");
+    $stmt = $conn->prepare("SELECT id, email, password, first_name, last_name FROM users WHERE email = ?");
     if (!$stmt) {
         echo json_encode(["error" => "SQL Error: " . $conn->error]);
         exit;
@@ -34,9 +34,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['user_email'] = $user['email'];
             $_SESSION['user_name'] = $user['first_name'] . " " . $user['last_name'];
 
-            echo json_encode(["success" => "Login successful", "redirect" => "user_info.html"]);
+            echo json_encode(["success" => "Login successful", "redirect" => "map.html"]);
         } else {
-            echo json_encode(["error" => "Invalid password."]);
+            echo json_encode(["error" => "Wrong Password"]);
         }
     }
 

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="img/FamilyTreeLogo.ico">
+    <title>F3 | Map</title>
+    <link rel="stylesheet" href="css/map.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon/fonts/remixicon.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <header class="header-container">
+        <div class="header-left">
+            <i class="ri-settings-line settings-icon"></i>
+        </div>
+
+        <div class="header-center">
+            <img class="header-logo" src="img/FamilyTreeLogo.png" alt="Family Tree Logo">
+        </div>
+
+        <div class="header-right">
+            <img class="user-avatar" src="img/default-profile-picture.png" alt="User Avatar">
+            <div class="user-info">
+                <span id="user-full-name">First/Middle Name</span>
+                <span id="user-last-name">Last Name</span>
+            </div>
+        </div>
+    </header>
+
+    <div id="cy"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            fetch('php/get_user_info.php')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.error) {
+                        alert(data.error);
+                        window.location.href = 'login.php';
+                    } else {
+                        document.getElementById('user-last-name').textContent = data.last_name;
+                        document.getElementById('user-full-name').textContent = `${data.first_name} ${data.middle_name || ''}`.trim();
+                    }
+                })
+                .catch(error => console.error('Error fetching user info:', error));
+        });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.21.0/cytoscape.min.js"></script>
+    <script src="js/cytoscape-setup.js"></script>
+</body>
+
+</html>

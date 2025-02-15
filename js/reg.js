@@ -40,26 +40,26 @@ document.addEventListener('DOMContentLoaded', function () {
 
     form.addEventListener('submit', function (event) {
         event.preventDefault();
-
+    
         const password = document.querySelector('input[name="password"]').value;
         const confirmPassword = document.querySelector('input[name="confirm_password"]').value;
         const errorMessage = document.getElementById('input-error');
         errorMessage.classList.add('hidden');
-
+    
         if (password.length < 8) {
             errorMessage.textContent = "Password must be at least 8 characters long.";
             errorMessage.classList.remove('hidden');
             return;
         }
-
+    
         if (password !== confirmPassword) {
             errorMessage.textContent = "Passwords do not match.";
             errorMessage.classList.remove('hidden');
             return;
         }
-
+    
         const formData = new FormData(form);
-
+    
         fetch('php/reg.php', {
             method: 'POST',
             body: formData
@@ -69,14 +69,14 @@ document.addEventListener('DOMContentLoaded', function () {
             if (data.error) {
                 errorMessage.textContent = data.error;
                 errorMessage.classList.remove('hidden');
-            } else if (data.success) {
-                alert(data.success);
+            } else if (data.redirect) {
+                window.location.href = data.redirect;
             }
         })
         .catch(error => {
-            console.error('Error:', error);
+            console.error("An error occurred:", error);
             errorMessage.textContent = `An error occurred: ${error.message}`;
             errorMessage.classList.remove('hidden');
         });
-    });
+    });    
 });

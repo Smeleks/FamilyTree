@@ -4,7 +4,7 @@
     align-items: center;
     justify-content: center;
     height: 100vh;
-    padding: 0 20px;
+    margin-top: -25px;
 }
 
 .logo {
@@ -40,6 +40,19 @@
     font-size: 14px;
     padding: 10px 20px;
     transition: 0.3s;
+    width: 175px;
+    text-align: center;
+    transition: .5s;
+}
+
+.create-tree-btn:hover {
+    background-color: #000;
+    color: #fff;
+}
+
+.button-container {
+    display: flex;
+    gap: 20px;
 }
 
 ::selection {
