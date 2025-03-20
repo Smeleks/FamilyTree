@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="img/FamilyTreeLogo.ico">
+    <title>Family Tree | Reg. Step 1</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/reg.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+
+<body>
+    <section class="reg-container">
+        <div>
+            <img class="reg-logo" src="{{ url_for('static', filename='img/FamilyTreeLogo.png') }}" alt="Family Tree Logo">
+        </div>
+        
+        <form id="registration-form" class="form" method="POST">
+            <h3>YOU</h3>
+            <div class="gender">
+                <label class="men" onclick="selectGender('male', this)">
+                    <i class="ri-men-line"></i>
+                    <span>male</span>
+                </label>
+                <label class="women" onclick="selectGender('female', this)">
+                    <i class="ri-women-line"></i>
+                    <span>female</span>
+                </label>
+            </div>            
+            <div class="name">
+                <input type="text" name="last_name" placeholder="Last name" class="people-input last-name" required><br>
+                <input type="text" name="first_name" placeholder="First name" class="people-input first-name" required>
+                <input type="text" name="middle_name" placeholder="Middle name" class="people-input middle-name">
+            </div>
+            <div class="dmy">
+                <input type="text" name="day" placeholder="dd" maxlength="2" class="people-input b-day" required>
+                <input type="text" name="month" placeholder="mm" maxlength="2" class="people-input b-month" required>
+                <input type="text" name="year" placeholder="yyyy" maxlength="4" class="people-input b-year" required>
+            </div>
+            <div class="name">
+                <input type="email" name="email" placeholder="Email" class="people-input last-name" required> <br>
+                <div class="password-container">
+                    <input type="password" name="password" placeholder="Password" class="people-input last-name" required>
+                    <i class="ri-eye-line password-toggle"></i>
+                </div>
+                <div class="password-container">
+                    <input type="password" name="confirm_password" placeholder="Confirm Password" class="people-input last-name" required>
+                    <i class="ri-eye-line password-toggle"></i>
+                </div>
+                <span id="input-error" class="input-error hidden"></span>
+            </div>
+            <button id="next-step-reg" class="next-btn" type="submit">Next</button>
+        </form>        
+
+    </section>
+
+    <script src="{{ url_for('static', filename='js/reg.js') }}"></script>
+</body>
+
+</html>

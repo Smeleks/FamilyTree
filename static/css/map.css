@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    font-family: "Inter", sans-serif;
+    font-weight: 300;
+    overflow: hidden;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 30px;
+    border-bottom: 1px solid #ccc;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    background: white;
+    z-index: 1000;
+    height: 80px;
+    margin-top: 10px;
+}
+
+.header-left,
+.header-right {
+    display: flex;
+    align-items: flex-start;
+}
+
+.header-center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-logo {
+    width: 80px;
+    height: auto;
+}
+
+.settings-icon {
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.user-info {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: left;
+}
+
+#user-full-name, #user-last-name {
+    text-transform: uppercase;
+}
+
+#user-last-name {
+    font-weight: bold;
+}
+
+#user-full-name {
+    font-size: 14px;
+    color: gray;
+}
+
+#cy {
+    width: 80%;
+    height: calc(100vh - 90px);
+    margin: 0 auto;
+    position: relative;
+    top: 90px;
+}
